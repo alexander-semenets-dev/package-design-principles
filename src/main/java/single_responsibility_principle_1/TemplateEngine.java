@@ -1,4 +1,4 @@
-package single_responsibility_1;
+package single_responsibility_principle_1;
 
 import java.util.Map;
 

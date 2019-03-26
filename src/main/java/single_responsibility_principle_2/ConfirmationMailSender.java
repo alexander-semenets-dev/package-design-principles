@@ -1,25 +1,25 @@
-package single_responsibility_2;
+package single_responsibility_principle_2;
 
-import single_responsibility_2.model.Message;
-import single_responsibility_2.model.User;
+import single_responsibility_principle_2.model.Message;
+import single_responsibility_principle_2.model.User;
 
-class ConfirmationMailMailer {
+class ConfirmationMailSender {
 
     private final ConfirmationMailFactory confirmationMailFactory;
-    private final Mailer mailer;
+    private final MailSender mailSender;
 
-    public ConfirmationMailMailer(
+    public ConfirmationMailSender(
             ConfirmationMailFactory confirmationMailFactory,
-            Mailer mailer
+            MailSender mailSender
     ) {
         this.confirmationMailFactory = confirmationMailFactory;
-        this.mailer = mailer;
+        this.mailSender = mailSender;
     }
 
     public void sendConfirmationMailToUser(User user) {
         final Message message = confirmationMailFactory.createConfirmationMessageForUser(user);
 
-        mailer.send(message);
+        mailSender.send(message);
     }
 
 }

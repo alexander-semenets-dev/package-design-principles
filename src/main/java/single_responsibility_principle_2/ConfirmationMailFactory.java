@@ -1,25 +1,29 @@
-package single_responsibility_2;
+package single_responsibility_principle_2;
 
-import single_responsibility_2.model.Message;
-import single_responsibility_2.model.User;
+import single_responsibility_principle_2.model.Message;
+import single_responsibility_principle_2.model.User;
 
 import java.util.Map;
 
 public class ConfirmationMailFactory {
 
     private final TemplateEngine templateEngine;
-    private final Translator translator;
+    private final LanguageTranslator languageTranslator;
 
     public ConfirmationMailFactory(
             TemplateEngine templateEngine,
-            Translator translator
+            LanguageTranslator languageTranslator
     ) {
         this.templateEngine = templateEngine;
-        this.translator = translator;
+        this.languageTranslator = languageTranslator;
     }
 
     public Message createConfirmationMessageForUser(User user) {
-        final String subject = translator.translate("Confirm your mail address");
+        final String subject = languageTranslator.translate(
+                "Confirm your mail address",
+                "EN",
+                user.getNativeLanguage()
+        );
 
         final String body = templateEngine.render(
                 "confirmation-mail.template",

@@ -1,4 +1,4 @@
-package single_responsibility_2.model;
+package single_responsibility_principle_2.model;
 
 public class Message {
 
