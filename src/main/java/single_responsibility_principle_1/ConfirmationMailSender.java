@@ -5,6 +5,7 @@ import single_responsibility_principle_1.model.User;
 
 import java.util.Map;
 
+@SuppressWarnings("Duplicates")
 class ConfirmationMailSender {
 
     private final TemplateEngine templateEngine;
